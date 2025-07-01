@@ -6,26 +6,31 @@ public class RangeSum_11659 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        int numberCount = Integer.parseInt(scanner.next());
-        int sumCount = Integer.parseInt(scanner.next());
-        scanner.nextLine();
+        int numberCount = scanner.nextInt();
+        int sumCount = scanner.nextInt();
 
-        String[] numbers = scanner.nextLine().split(" ");
-
-        int[] totals = new int[sumCount];
-        for (int index = 0; index < sumCount; index++) {
-            int total = 0;
-            int i = Integer.parseInt(scanner.next());
-            int j = Integer.parseInt(scanner.next());
-
-            for (int k = i-1; k < j; k++) {
-                total += Integer.parseInt(numbers[k]);
-            }
-            totals[index] = total;
+        // 숫자들 저장
+        int[] numbers = new int[numberCount + 1];
+        for (int i = 1; i <= numberCount; i++) {
+            numbers[i] = scanner.nextInt();
         }
 
-        for (int index = 0; index < sumCount; index++) {
-            System.out.println(totals[index]);
+        // 더한 수 배열
+        int[] sum = new int[numberCount + 1];
+        for (int i = 1; i <= numberCount; i++) {
+            sum[i] = sum[i - 1] + numbers[i];
+        }
+
+        // 구간별 계산
+        int[] total = new int[numberCount + 1];
+        for (int t = 0; t < sumCount; t++) {
+            int i = scanner.nextInt();
+            int j = scanner.nextInt();
+            total[t] = sum[j] - sum[i - 1];
+        }
+
+        for (int i = 0; i < sumCount; i++) {
+            System.out.println(total[i]);
         }
     }
 }
