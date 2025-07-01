@@ -2,6 +2,7 @@ package cote;
 
 import java.util.Scanner;
 
+// 구간합 문제
 public class RangeSum_11659 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
