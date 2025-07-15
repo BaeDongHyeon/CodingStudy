@@ -1,4 +1,4 @@
-package cote.other;
+package cote.other.day3;
 
 import java.io.BufferedReader;
 import java.io.IOException;
